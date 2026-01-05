@@ -14,13 +14,6 @@ w_hidden_output = [0.5 for _ in range(5)]
 # Bias for Output Layer (1)
 b_output = 0.1
 
-def show_state(label):
-    print(f"--- {label} ---")
-    print(f"Hidden Layer Biases: {[round(b, 2) for b in b_hidden]}")
-    print(f"Output Layer Bias: {round(b_output, 2)}")
-    print("Sample Weights (Input[0] to Hidden):", [round(w_input_hidden[0][i], 2) for i in range(5)])
-    print("Weights (Hidden to Output):", [round(w, 2) for w in w_hidden_output])
-    print("\n")
 
 # Show Initial State
 show_state("INITIAL STATE (UNUPDATED)")
@@ -65,4 +58,11 @@ for j in range(5):
 
 # Show Final State
 show_state("UPDATED STATE (AFTER 1 ITERATION)")
+def show_state(label):
+    print(f"--- {label} ---")
+    print(f"Hidden Layer Biases: {[round(b, 2) for b in b_hidden]}")
+    print(f"Output Layer Bias: {round(b_output, 2)}")
+    print("Sample Weights (Input[0] to Hidden):", [round(w_input_hidden[0][i], 2) for i in range(5)])
+    print("Weights (Hidden to Output):", [round(w, 2) for w in w_hidden_output])
+    print("\n")
 print(f"Final Prediction was: {round(output, 2)}")
