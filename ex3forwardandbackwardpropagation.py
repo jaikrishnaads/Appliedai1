@@ -1,74 +1,68 @@
-# Initial weights and biases (fixed values)
-# Input to Hidden weights (3x5)
-w_input_hidden = [
-    [0.1, 0.2, 0.3, 0.4, 0.5],
-    [0.2, 0.3, 0.4, 0.5, 0.6],
-    [0.3, 0.4, 0.5, 0.6, 0.7]
-]
+# Configuration
+LR = 0.1  # Learning Rate
+TARGET = 1.0  # The value we want the network to predict
+X = [1.0, 0.5, 2.0]  # Inputs x1, x2, x3
 
-# Hidden to Output weights (5x1)
-w_hidden_output = [0.1, 0.2, 0.3, 0.4, 0.5]
+# 1. Initialize Weights and Biases (No random lib)
+# Weights from Input (3) to Hidden (5) - 15 total
+w_input_hidden = [[0.5 for _ in range(5)] for _ in range(3)]
+# Biases for Hidden Layer (5)
+b_hidden = [0.1 for _ in range(5)]
 
-# Biases
-b_hidden = [0.1, 0.2, 0.3, 0.4, 0.5]
+# Weights from Hidden (5) to Output (1) - 5 total
+w_hidden_output = [0.5 for _ in range(5)]
+# Bias for Output Layer (1)
 b_output = 0.1
 
-# Input values
-x = [0.5, 0.6, 0.7]
+def show_state(label):
+    print(f"--- {label} ---")
+    print(f"Hidden Layer Biases: {[round(b, 2) for b in b_hidden]}")
+    print(f"Output Layer Bias: {round(b_output, 2)}")
+    print("Sample Weights (Input[0] to Hidden):", [round(w_input_hidden[0][i], 2) for i in range(5)])
+    print("Weights (Hidden to Output):", [round(w, 2) for w in w_hidden_output])
+    print("\n")
 
-# Target output
-y_target = 0.7
+# Show Initial State
+show_state("INITIAL STATE (UNUPDATED)")
 
-# Learning rate
-learning_rate = 0.5
+# --- FORWARD PASS ---
+# Calculate Hidden Layer Neurons (x4 to x8)
+# Note: Using a simple linear activation for clarity
+hidden_outputs = []
+for j in range(5):
+    neuron_sum = b_hidden[j]
+    for i in range(3):
+        neuron_sum += X[i] * w_input_hidden[i][j]
+    hidden_outputs.append(neuron_sum)
 
-# Sigmoid function
-def sigmoid(x):
-    return 1 / (1 + 10**(-x))
+# Calculate Output Neuron (x10)
+output = b_output
+for j in range(5):
+    output += hidden_outputs[j] * w_hidden_output[j]
 
-# Forward pass
-hidden_in = [sum(w_input_hidden[i][j] * x[i] for i in range(3)) + b_hidden[j] for j in range(5)]
-hidden_out = [sigmoid(h) for h in hidden_in]
+# --- BACKWARD PASS (Manual Update) ---
+# 1. Calculate Error (Target - Prediction)
+error = TARGET - output
 
-output_in = sum(w_hidden_output[j] * hidden_out[j] for j in range(5)) + b_output
-output_out = sigmoid(output_in)
+# 2. Update Output Weights and Bias
+# Gradient for output weights = error * hidden_output
+for j in range(5):
+    delta_w_out = error * hidden_outputs[j]
+    w_hidden_output[j] += LR * delta_w_out
 
-# Backward pass
-# Output layer error
-output_error = y_target - output_out
-output_delta = output_error * output_out * (1 - output_out)
+b_output += LR * error
 
-# Hidden layer error
-hidden_error = [output_delta * w_hidden_output[j] for j in range(5)]
-hidden_delta = [hidden_error[j] * hidden_out[j] * (1 - hidden_out[j]) for j in range(5)]
+# 3. Update Input-to-Hidden Weights and Biases
+# Gradient for hidden = error * weight_to_output * input
+for j in range(5):
+    # Backpropagate error through the output weight
+    hidden_error = error * w_hidden_output[j]
+    
+    for i in range(3):
+        w_input_hidden[i][j] += LR * hidden_error * X[i]
+    
+    b_hidden[j] += LR * hidden_error
 
-# Update weights and biases
-# Hidden to Output
-w_hidden_output = [w_hidden_output[j] + learning_rate * output_delta * hidden_out[j] for j in range(5)]
-b_output += learning_rate * output_delta
-
-# Input to Hidden
-w_input_hidden = [
-    [w_input_hidden[i][j] + learning_rate * hidden_delta[j] * x[i] for j in range(5)]
-    for i in range(3)
-]
-b_hidden = [b_hidden[j] + learning_rate * hidden_delta[j] for j in range(5)]
-
-# Round to 2 decimal places
-w_input_hidden = [[round(w, 2) for w in row] for row in w_input_hidden]
-w_hidden_output = [round(w, 2) for w in w_hidden_output]
-b_hidden = [round(b, 2) for b in b_hidden]
-b_output = round(b_output, 2)
-
-# Print unupdated and updated values
-print("Unupdated Weights and Biases:")
-print("Input to Hidden Weights:", [[0.1, 0.2, 0.3, 0.4, 0.5], [0.2, 0.3, 0.4, 0.5, 0.6], [0.3, 0.4, 0.5, 0.6, 0.7]])
-print("Hidden to Output Weights:", [0.1, 0.2, 0.3, 0.4, 0.5])
-print("Hidden Biases:", [0.1, 0.2, 0.3, 0.4, 0.5])
-print("Output Bias:", 0.1)
-
-print("\nUpdated Weights and Biases:")
-print("Input to Hidden Weights:", w_input_hidden)
-print("Hidden to Output Weights:", w_hidden_output)
-print("Hidden Biases:", b_hidden)
-print("Output Bias:", b_output)
+# Show Final State
+show_state("UPDATED STATE (AFTER 1 ITERATION)")
+print(f"Final Prediction was: {round(output, 2)}")
