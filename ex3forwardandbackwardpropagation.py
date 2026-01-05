@@ -17,10 +17,10 @@ b_output = 0.1
 x = [0.5, 0.6, 0.7]
 
 # Target output
-y_target = 0.9
+y_target = 0.7
 
 # Learning rate
-learning_rate = 0.1
+learning_rate = 0.5
 
 # Sigmoid function
 def sigmoid(x):
