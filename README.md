@@ -1,68 +1,53 @@
-# Appliedai1
+# AppliedAI1
 
-Educational examples demonstrating basic perceptron logic and simple neural network forward/backward propagation implemented in Python and Jupyter Notebook.
+A short description of the AppliedAI1 project — a collection of exercises and notebooks for learning core AI/ML concepts.
 
-## Repository overview
+## Table of contents
+- [About](#about)
+- [Exercises](#exercises)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Development](#development)
+- [Contributing](#contributing)
+- [License](#license)
 
-This repository contains small, self-contained experiments that illustrate core concepts in applied AI and neural networks, intended for learning and experimentation.
+## About
+This repository contains small exercises, example scripts, and notebooks used to explore foundational applied AI topics (activation functions, forward/backward propagation, simple logical/Perceptron examples, and a small dataset for experiments).
 
-What you'll find here:
+## Exercises
+The repository currently contains the following exercise files and resources:
 
-- `ex2andandor.py` - Perceptron implementation demonstrating AND and OR gate behavior, with a simple activation function and training loop.
-- `ex3forwardandbackwardpropagation.py` - A Python script that implements forward and backward propagation for a small neural network, including weight and bias updates.
-- `Untitled (1).ipynb` - Jupyter Notebook version of the forward/backward propagation experiment (interactive exploration and step-by-step calculations).
-- `heart.csv` - A CSV dataset included for experimenting with simple supervised learning exercises (basic heart dataset for demonstration).
+- [ex2andandor.py](ex2andandor.py) — Python script demonstrating logical operations (AND / OR) and simple perceptron logic.
+- [ex3forwardandbackwardpropagation.py](ex3forwardandbackwardpropagation.py) — Python script that illustrates forward and backward propagation for a small neural network or example model.
+- [ex3sigmod,relu,tanx.ipynb](ex3sigmod,relu,tanx.ipynb) — Jupyter notebook exploring activation functions (sigmoid, ReLU, tanh) and their properties. (Filename contains commas; open directly in the repo.)
+- [Untitled (1).ipynb](Untitled%20(1).ipynb) — Additional notebook (rename and document as needed).
+- [heart.csv](heart.csv) — Small dataset (heart disease / medical features) used for exercises and examples.
 
-## Getting started
+If you want, I can add short descriptions inside each notebook/script or rename files to clearer names (recommended: avoid commas and spaces).
 
-Prerequisites
+## Installation
+1. Clone the repo:
+   git clone https://github.com/jaikrishnaads/Appliedai1.git
+2. Create and activate a virtual environment (recommended):
+   python -m venv venv
+   source venv/bin/activate  # macOS / Linux
+   venv\Scripts\activate     # Windows
+3. Install dependencies (if you have a requirements file):
+   pip install -r requirements.txt
 
-- Python 3.8+ recommended
-- pip
+## Usage
+- Open notebooks in the `notebooks/` directory (or click the `.ipynb` files in the repo) using Jupyter or VS Code.
+- Run scripts directly, for example:
+   python ex2andandor.py
+   python ex3forwardandbackwardpropagation.py
 
-Install dependencies (example):
+## Development
+- Run linting and tests (if present):
+   pip install -r requirements-dev.txt
+   pytest
 
-```bash
-pip install numpy pandas jupyter matplotlib
-```
+## Contributing
+Contributions are welcome — please open an issue to discuss changes or create a pull request. Consider adding a CONTRIBUTING.md for contribution guidelines.
 
-Running the examples
-
-- Run the perceptron AND/OR example:
-
-```bash
-python ex2andandor.py
-```
-
-- Run the forward/backward propagation script:
-
-```bash
-python ex3forwardandbackwardpropagation.py
-```
-
-- Open the notebook for interactive exploration:
-
-```bash
-jupyter notebook "Untitled (1).ipynb"
-```
-
-Notes
-
-- These scripts are educational and intentionally simple to make the underlying math and logic easy to follow.
-- Expect straightforward, small-scale examples rather than production-ready models or data preprocessing pipelines.
-
-Dataset
-
-- `heart.csv` is a small CSV file included for experimentation. Ensure any scripts that read it expect it to be located in the repository root or adjust paths accordingly.
-
-Contributing
-
-Contributions, improvements, and bug reports are welcome. Please open an issue or submit a pull request with a clear description of the change and rationale.
-
-License
-
-This repository does not include a license. If you want others to reuse your work, consider adding an appropriate open-source license (for example, MIT, Apache-2.0, or GPL-3.0).
-
-Contact
-
-For questions or feedback, reach out via the repository owner: [jaikrishnaads](https://github.com/jaikrishnaads).
+## License
+Add your license name here (e.g., MIT). If you want, I can add a LICENSE file too.
