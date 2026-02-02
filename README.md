@@ -1,53 +1,94 @@
 # AppliedAI1
 
-A short description of the AppliedAI1 project — a collection of exercises and notebooks for learning core AI/ML concepts.
+A collection of small exercises, scripts, and notebooks for learning core AI/ML concepts.
 
-## Table of contents
+## Table of Contents
 - [About](#about)
 - [Exercises](#exercises)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Development](#development)
+- [How to run the exercises](#how-to-run-the-exercises)
+- [Project layout](#project-layout)
+- [Recommendations](#recommendations)
 - [Contributing](#contributing)
-- [License](#license)
+- [License & Contact](#license--contact)
 
 ## About
-This repository contains small exercises, example scripts, and notebooks used to explore foundational applied AI topics (activation functions, forward/backward propagation, simple logical/Perceptron examples, and a small dataset for experiments).
+This repository contains compact, hands-on examples demonstrating foundational topics like logic gates and perceptrons, forward and backward propagation, activation functions, and a small sample dataset for experiments. The exercises are meant for learning and experimentation.
 
 ## Exercises
-The repository currently contains the following exercise files and resources:
+The repository currently includes the following exercise files. Each entry shows the file name, location, short description, and suggested run/open steps.
 
-- [ex2andandor.py](ex2andandor.py) — Python script demonstrating logical operations (AND / OR) and simple perceptron logic.
-- [ex3forwardandbackwardpropagation.py](ex3forwardandbackwardpropagation.py) — Python script that illustrates forward and backward propagation for a small neural network or example model.
-- [ex3sigmod,relu,tanx.ipynb](ex3sigmod,relu,tanx.ipynb) — Jupyter notebook exploring activation functions (sigmoid, ReLU, tanh) and their properties. (Filename contains commas; open directly in the repo.)
-- [Untitled (1).ipynb](Untitled%20(1).ipynb) — Additional notebook (rename and document as needed).
-- [heart.csv](heart.csv) — Small dataset (heart disease / medical features) used for exercises and examples.
+- ex2andandor.py — Root
+  - Description: Small Python script demonstrating logical operations (AND / OR) and a simple perceptron example. Likely contains example inputs, outputs, and a simple training/update loop.
+  - How to run: `python ex2andandor.py`
+  - Notes: If the script prints results or plots, run it in a terminal or an environment that supports plotting.
 
-If you want, I can add short descriptions inside each notebook/script or rename files to clearer names (recommended: avoid commas and spaces).
+- ex3forwardandbackwardpropagation.py — Root
+  - Description: Script that demonstrates forward and backward propagation on a tiny neural network or on a toy example. Useful to study gradients, weight updates, and loss computation step-by-step.
+  - How to run: `python ex3forwardandbackwardpropagation.py`
+  - Notes: Inspect the top of the file for any required dependencies or hard-coded data paths.
 
-## Installation
-1. Clone the repo:
-   git clone https://github.com/jaikrishnaads/Appliedai1.git
-2. Create and activate a virtual environment (recommended):
-   python -m venv venv
-   source venv/bin/activate  # macOS / Linux
-   venv\Scripts\activate     # Windows
-3. Install dependencies (if you have a requirements file):
-   pip install -r requirements.txt
+- ex3sigmod,relu,tanx.ipynb — Root (Jupyter notebook)
+  - Description: Notebook exploring activation functions: sigmoid, ReLU, tanh (filename currently contains commas). Contains plots, comparisons of derivatives, and example usage in networks.
+  - How to open: Launch with Jupyter: `jupyter notebook ex3sigmod,relu,tanx.ipynb` or open in VS Code/JupyterLab.
+  - Notes: Consider renaming to `ex3_activation_functions.ipynb` to avoid commas and spaces.
 
-## Usage
-- Open notebooks in the `notebooks/` directory (or click the `.ipynb` files in the repo) using Jupyter or VS Code.
-- Run scripts directly, for example:
+- Untitled (1).ipynb — Root (Jupyter notebook)
+  - Description: Additional notebook — contents not documented. Likely an ad-hoc or scratch notebook used during experimentation.
+  - How to open: `jupyter notebook "Untitled (1).ipynb"`
+  - Notes: Rename to a descriptive name and add a short header cell describing the notebook's purpose.
+
+- heart.csv — Root (data file)
+  - Description: Small dataset (heart disease / medical features) used for classification experiments or demos.
+  - How to use: Load with pandas: `pd.read_csv("heart.csv")`. Check the notebooks or scripts for reference to expected columns or preprocessing steps.
+
+If you want, I can:
+- Add brief README subsections that embed short excerpts (1–2 lines) from each script/notebook describing function names, main classes, or variables.
+- Open and extract the first markdown/header cell of each notebook to include its brief summary into the README.
+- Rename files to consistent, descriptive names (I recommend avoiding spaces and commas in filenames).
+
+## How to run the exercises
+1. Create a virtual environment and install packages (if any):
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate   # macOS / Linux
+   .venv\Scripts\activate      # Windows
+   pip install -r requirements.txt  # if you add one
+   ```
+2. Run Python scripts:
+   ```bash
    python ex2andandor.py
    python ex3forwardandbackwardpropagation.py
+   ```
+3. Open notebooks:
+   ```bash
+   jupyter notebook
+   # then open the .ipynb files from the browser UI
+   ```
 
-## Development
-- Run linting and tests (if present):
-   pip install -r requirements-dev.txt
-   pytest
+## Project layout
+- ex2andandor.py
+- ex3forwardandbackwardpropagation.py
+- ex3sigmod,relu,tanx.ipynb
+- Untitled (1).ipynb
+- heart.csv
+- README.md
+
+## Recommendations
+- Rename notebooks/files to remove spaces/commas. Suggested names:
+  - ex2_and_or.py
+  - ex3_forward_backward_propagation.py
+  - ex3_activation_functions.ipynb
+  - notebook_explorations.ipynb
+- Add a requirements.txt with libraries used (numpy, pandas, matplotlib, jupyter, etc.).
+- Add a 1–2 line header cell to each notebook describing its goal; I can automatically extract and insert those descriptions into README if you want.
+- If any scripts expect specific data paths or packages, add brief usage examples and parameter descriptions under each exercise entry.
 
 ## Contributing
-Contributions are welcome — please open an issue to discuss changes or create a pull request. Consider adding a CONTRIBUTING.md for contribution guidelines.
+Contributions welcome. Please open an issue or send a pull request. When contributing exercises:
+- Use descriptive file names
+- Add a short docstring or header comment explaining the exercise
+- Add a small example command to run the exercise
 
-## License
-Add your license name here (e.g., MIT). If you want, I can add a LICENSE file too.
+## License & Contact
+- License: (add your license, e.g., MIT)
+- Maintainer: jaikrishnaads
